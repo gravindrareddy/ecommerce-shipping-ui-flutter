@@ -11,8 +11,8 @@ class EcommerceOrderForm extends StatelessWidget {
       theme: ThemeData(
         // Define the default brightness and colors.
         brightness: Brightness.light,
-        primaryColor: Colors.lightBlue[800],
-        accentColor: Colors.cyan[600],
+        primaryColor: Colors.white,
+        accentColor: Colors.greenAccent[600],
 
         // Define the default font family.
         fontFamily: 'LexendDeca',
@@ -20,9 +20,12 @@ class EcommerceOrderForm extends StatelessWidget {
         // Define the default TextTheme. Use this to specify the default
         // text styling for headlines, titles, bodies of text, and more.
         textTheme: TextTheme(
-          headline: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
-          title: TextStyle(fontSize: 36.0, fontStyle: FontStyle.italic),
-          body1: TextStyle(fontSize: 14.0, fontFamily: 'Hind'),
+          headline: TextStyle(
+            fontSize: 20.0,
+            fontWeight: FontWeight.normal,
+          ),
+          title: TextStyle(fontSize: 12.0, fontWeight: FontWeight.bold),
+          body1: TextStyle(fontSize: 12.0, fontWeight: FontWeight.normal),
         ),
       ),
       home: Scaffold(

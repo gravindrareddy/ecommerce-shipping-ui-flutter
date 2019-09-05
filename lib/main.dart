@@ -37,6 +37,17 @@ class EcommerceOrderForm extends StatelessWidget {
               children: <Widget>[
                 Expanded(child: FormStepWidget("1")),
                 Expanded(child: FormStepIndicatorWidget("1")),
+                Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  Container(
+                    height: 20,
+                    alignment: Alignment.topRight,
+                      child: Icon(
+                    Icons.star,
+                    color: Colors.red,
+                    size: 10,
+                  )),
+                  _SmallTextBoldWidget("Indicates required field"),
+                ]),
                 Expanded(
                     flex: 8,
                     child: Container(
@@ -46,15 +57,17 @@ class EcommerceOrderForm extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                      Padding(
-                      padding: EdgeInsets.fromLTRB(6, 6, 6, 0),
-                      child:CustomTextFieldWidget("Shipper", "Company Name")),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(6, 0, 6, 6),
-                    child: CustomTextFieldWidget("Location", "Address")),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(6, 0, 6, 0),
-                    child:CustomTextFieldWidget("BOL #", "Optional"))
+                          Padding(
+                              padding: EdgeInsets.fromLTRB(8, 8, 8, 0),
+                              child: CustomTextFieldWidget(
+                                  "Shipper", "Company Name")),
+                          Padding(
+                              padding: EdgeInsets.fromLTRB(8, 0, 8, 8),
+                              child:
+                                  CustomTextFieldWidget("Location", "Address")),
+                          Padding(
+                              padding: EdgeInsets.fromLTRB(8, 0, 8, 0),
+                              child: CustomTextFieldWidget("BOL #", "Optional"))
                         ],
                       ),
                     ))
@@ -309,6 +322,7 @@ class CustomTextFieldWidget extends StatefulWidget {
   }
 }
 
+/// ToDo: Place all the values like size, etc at common place. Try to reuse Themes concept
 class CustomTextFieldState extends State<CustomTextFieldWidget> {
   String textFieldLabel;
   String textFieldHint;
@@ -318,21 +332,61 @@ class CustomTextFieldState extends State<CustomTextFieldWidget> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return  Container(
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(2),
-                border: Border.all(width: 1, color: Colors.grey)),
-            child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  Text(
-                    textFieldLabel,
-                  ),
-                  Expanded(
-                    child: TextField(
-                      decoration: new InputDecoration(hintText: textFieldHint, fillColor: Colors.black12,contentPadding: EdgeInsets.all(6),
-                    ),
-                  ))
-                ]));
+    return Container(
+        child:
+            Row(mainAxisAlignment: MainAxisAlignment.start, children: <Widget>[
+      Padding(
+          padding: EdgeInsets.fromLTRB(8, 0, 0, 0),
+          child: Container(
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.grey),
+              ),
+              width: 60,
+              height: 40,
+              child: Align(
+                  child: Padding(
+                      padding: EdgeInsets.fromLTRB(4, 4, 4, 4),
+                      child: Text(
+                        textFieldLabel,
+                      ))))),
+      Expanded(
+          child: Padding(
+              padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+              child: Container(
+                decoration: BoxDecoration(
+                    border: Border(
+                  top: BorderSide(color: Colors.grey),
+                  bottom: BorderSide(color: Colors.grey),
+                )),
+                width: 340,
+                height: 40,
+                child: Align(
+                    child: Padding(
+                        padding: EdgeInsets.fromLTRB(4, 4, 4, 4),
+                        child: TextField(
+                            decoration: new InputDecoration.collapsed(
+                                hintText: textFieldHint,
+                                hintStyle: TextStyle(
+                                    color: Colors.black26, fontSize: 12))))),
+              ))),
+      Padding(
+          padding: EdgeInsets.fromLTRB(0, 0, 8, 0),
+          child: Container(
+              height: 40,
+              alignment: Alignment.topRight,
+              decoration: BoxDecoration(
+                  border: Border(
+                top: BorderSide(color: Colors.grey),
+                right: BorderSide(color: Colors.grey),
+                bottom: BorderSide(color: Colors.grey),
+              )),
+              child: Padding(
+                  padding: EdgeInsets.fromLTRB(4, 4, 4, 4),
+                  child: Icon(
+                    Icons.star,
+                    color: Colors.red,
+                    size: 10,
+                  ))))
+    ]));
   }
 }

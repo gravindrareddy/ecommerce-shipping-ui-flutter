@@ -41,16 +41,20 @@ class EcommerceOrderForm extends StatelessWidget {
                     flex: 8,
                     child: Container(
                       constraints: BoxConstraints.expand(),
-                      decoration: BoxDecoration(color: Colors.blue),
+                      decoration: BoxDecoration(color: Colors.white),
                       alignment: Alignment(-1, -1),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          Text("Column1", textAlign: TextAlign.left),
-                          Text(
-                            "ToDo: Form fields & Buttons",
-                            textAlign: TextAlign.left,
-                          )
+                      Padding(
+                      padding: EdgeInsets.fromLTRB(6, 6, 6, 0),
+                      child:CustomTextFieldWidget("Shipper", "Company Name")),
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(6, 0, 6, 6),
+                    child: CustomTextFieldWidget("Location", "Address")),
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(6, 0, 6, 0),
+                    child:CustomTextFieldWidget("BOL #", "Optional"))
                         ],
                       ),
                     ))
@@ -287,5 +291,48 @@ class InactiveCircleAvatarWidget extends StatelessWidget {
           child: Text(content),
           radius: 12,
         ));
+  }
+}
+
+/// Custom TextField with label - StatefulWidget class
+
+class CustomTextFieldWidget extends StatefulWidget {
+  String textFieldLabel;
+  String textFieldHint;
+
+  CustomTextFieldWidget(this.textFieldLabel, this.textFieldHint);
+
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return CustomTextFieldState(textFieldLabel, textFieldHint);
+  }
+}
+
+class CustomTextFieldState extends State<CustomTextFieldWidget> {
+  String textFieldLabel;
+  String textFieldHint;
+
+  CustomTextFieldState(this.textFieldLabel, this.textFieldHint);
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return  Container(
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(2),
+                border: Border.all(width: 1, color: Colors.grey)),
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    textFieldLabel,
+                  ),
+                  Expanded(
+                    child: TextField(
+                      decoration: new InputDecoration(hintText: textFieldHint, fillColor: Colors.black12,contentPadding: EdgeInsets.all(6),
+                    ),
+                  ))
+                ]));
   }
 }

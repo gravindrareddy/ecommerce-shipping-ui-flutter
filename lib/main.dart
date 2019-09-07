@@ -89,6 +89,29 @@ class EcommerceOrderForm extends StatelessWidget {
                                         "Date Requested", "Select Date"),
                                     CustomDropDownWidget(
                                         "Date Actual", "Select Date")
+                                  ])),
+                          Padding(
+                              padding: EdgeInsets.fromLTRB(8, 24, 8, 8),
+                              child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: <Widget>[
+                                    FlatButton(
+                                        onPressed: () {},
+                                        child: Text("Back"),
+                                        textColor: Colors.blue,
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(4))),
+                                    FlatButton(
+                                      onPressed: () {},
+                                      child: Text("Next"),
+                                      color: Colors.black,
+                                      textColor: Colors.white,
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(4)),
+                                    )
                                   ]))
                         ],
                       ),

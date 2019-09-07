@@ -35,23 +35,23 @@ class EcommerceOrderForm extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
-                Expanded(child: FormStepWidget("1")),
-                Expanded(child: FormStepIndicatorWidget("1")),
+                Expanded(flex: 1, child: FormStepWidget("1")),
+                Expanded(flex: 1, child: FormStepIndicatorWidget("1")),
                 Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                   Container(
-                    height: 20,
-                    alignment: Alignment.topRight,
+                      height: 20,
+                      alignment: Alignment.topRight,
                       child: Icon(
-                    Icons.star,
-                    color: Colors.red,
-                    size: 10,
-                  )),
+                        Icons.star,
+                        color: Colors.red,
+                        size: 10,
+                      )),
                   _SmallTextBoldWidget("Indicates required field"),
                 ]),
                 Expanded(
                     flex: 8,
-                    child: Container(
-                      constraints: BoxConstraints.expand(),
+                    child: SingleChildScrollView(
+                        child: Container(
                       decoration: BoxDecoration(color: Colors.white),
                       alignment: Alignment(-1, -1),
                       child: Column(
@@ -67,10 +67,21 @@ class EcommerceOrderForm extends StatelessWidget {
                                   CustomTextFieldWidget("Location", "Address")),
                           Padding(
                               padding: EdgeInsets.fromLTRB(8, 0, 8, 0),
-                              child: CustomTextFieldWidget("BOL #", "Optional"))
+                              child:
+                                  CustomTextFieldWidget("BOL #", "Optional")),
+                          Padding(
+                              padding: EdgeInsets.fromLTRB(8, 24, 8, 8),
+                              child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: <Widget>[
+                                    CustomDropDownWidget("Service Mode", "LTL"),
+                                    CustomDropDownWidget(
+                                        "Transit Service", "Select One")
+                                  ]))
                         ],
                       ),
-                    ))
+                    )))
               ],
             )),
       ),
@@ -346,7 +357,7 @@ class CustomTextFieldState extends State<CustomTextFieldWidget> {
               child: Align(
                   child: Padding(
                       padding: EdgeInsets.fromLTRB(4, 4, 4, 4),
-                      child: Text(
+                      child: _SmallTextBoldWidget(
                         textFieldLabel,
                       ))))),
       Expanded(
@@ -388,5 +399,51 @@ class CustomTextFieldState extends State<CustomTextFieldWidget> {
                     size: 10,
                   ))))
     ]));
+  }
+}
+
+class CustomDropDownWidget extends StatefulWidget {
+  String fieldLabel;
+  String dropdownValue;
+
+  CustomDropDownWidget(this.fieldLabel, this.dropdownValue);
+
+  @override
+  _CustomDropDownWidgetState createState() =>
+      _CustomDropDownWidgetState(fieldLabel, dropdownValue);
+}
+
+class _CustomDropDownWidgetState extends State<CustomDropDownWidget> {
+  String fieldLabel;
+  String dropdownValue;
+
+  _CustomDropDownWidgetState(this.fieldLabel, this.dropdownValue);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: <Widget>[
+          _SmallTextBoldWidget(fieldLabel),
+          Padding(
+              padding: EdgeInsets.fromLTRB(8, 0, 0, 0),
+              child: Container(
+                  color: Colors.white,
+                  child: DropdownButton<String>(
+                    value: dropdownValue,
+                    onChanged: (String newValue) {
+                      setState(() {
+                        dropdownValue = newValue;
+                      });
+                    },
+                    items: <String>['LTL', 'Select One', 'Free', 'Four']
+                        .map<DropdownMenuItem<String>>((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value),
+                      );
+                    }).toList(),
+                  )))
+        ]);
   }
 }

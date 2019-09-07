@@ -78,6 +78,17 @@ class EcommerceOrderForm extends StatelessWidget {
                                     CustomDropDownWidget("Service Mode", "LTL"),
                                     CustomDropDownWidget(
                                         "Transit Service", "Select One")
+                                  ])),
+                          Padding(
+                              padding: EdgeInsets.fromLTRB(8, 24, 8, 8),
+                              child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: <Widget>[
+                                    CustomDropDownWidget(
+                                        "Date Requested", "Select Date"),
+                                    CustomDropDownWidget(
+                                        "Date Actual", "Select Date")
                                   ]))
                         ],
                       ),
@@ -422,13 +433,17 @@ class _CustomDropDownWidgetState extends State<CustomDropDownWidget> {
   @override
   Widget build(BuildContext context) {
     return Column(
-        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           _SmallTextBoldWidget(fieldLabel),
           Padding(
-              padding: EdgeInsets.fromLTRB(8, 0, 0, 0),
+              padding: EdgeInsets.fromLTRB(2, 2, 2, 2),
               child: Container(
-                  color: Colors.white,
+                  height: 32,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(4),
+                      color: Colors.black12),
+                  alignment: Alignment.center,
                   child: DropdownButton<String>(
                     value: dropdownValue,
                     onChanged: (String newValue) {
@@ -436,11 +451,13 @@ class _CustomDropDownWidgetState extends State<CustomDropDownWidget> {
                         dropdownValue = newValue;
                       });
                     },
-                    items: <String>['LTL', 'Select One', 'Free', 'Four']
+                    items: <String>['LTL', 'Select One', 'Select Date', 'Four']
                         .map<DropdownMenuItem<String>>((String value) {
                       return DropdownMenuItem<String>(
                         value: value,
-                        child: Text(value),
+                        child: Padding(
+                            padding: EdgeInsets.fromLTRB(8, 2, 2, 2),
+                            child: Text(value, textAlign: TextAlign.center)),
                       );
                     }).toList(),
                   )))

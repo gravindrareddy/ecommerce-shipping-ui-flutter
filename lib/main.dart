@@ -62,144 +62,147 @@ class EcommerceOrderWidgetState extends State<EcommerceOrderFormWidget> {
                 ]),
                 Expanded(
                     flex: 8,
-                    child: Stack(
-                        alignment: Alignment.bottomCenter,
-                        children: [
+                    child: Stack(alignment: Alignment.bottomCenter, children: [
                       SingleChildScrollView(
+                          padding: EdgeInsets.fromLTRB(2, 2, 2, 56),
                           child: Container(
-                        decoration: BoxDecoration(color: Colors.white),
-                        alignment: Alignment(-1, -1),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Padding(
-                                padding: EdgeInsets.fromLTRB(8, 8, 8, 0),
-                                child: CustomTextFieldWidget(
-                                    "Shipper", "Company Name")),
-                            Padding(
-                                padding: EdgeInsets.fromLTRB(8, 0, 8, 8),
-                                child: CustomTextFieldWidget(
-                                    "Location", "Address")),
-                            Padding(
-                                padding: EdgeInsets.fromLTRB(8, 0, 8, 0),
-                                child:
-                                    CustomTextFieldWidget("BOL #", "Optional")),
-                            Padding(
-                                padding: EdgeInsets.fromLTRB(8, 24, 8, 8),
-                                child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
-                                    children: <Widget>[
-                                      CustomDropDownWidget(
-                                          "Service Mode", "LTL"),
-                                      CustomDropDownWidget(
-                                          "Transit Service", "Select One")
-                                    ])),
-                            Padding(
-                                padding: EdgeInsets.fromLTRB(8, 24, 8, 8),
-                                child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
-                                    children: <Widget>[
-                                      CustomDropDownWidget(
-                                          "Date Requested", "Select Date"),
-                                      CustomDropDownWidget(
-                                          "Date Actual", "Select Date")
-                                    ])),
-                            Padding(
-                                padding: EdgeInsets.fromLTRB(8, 24, 8, 8),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    _SmallTextBoldWidget("Pickup Services"),
-                                    // [Monday] checkbox
-                                    Padding(
-                                        padding:
-                                            EdgeInsets.fromLTRB(8, 8, 8, 8),
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          children: <Widget>[
-                                            _SmallTextWidget(
-                                                "Construction Site"),
-                                            Checkbox(
-                                              value: monVal,
-                                              onChanged: (bool value) {
-                                                setState(() {
-                                                  monVal = value;
-                                                });
-                                              },
-                                            ),
-                                          ],
-                                        )),
-                                    // [Tuesday] checkbox
-                                    Padding(
-                                        padding:
-                                            EdgeInsets.fromLTRB(8, 8, 8, 8),
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          children: <Widget>[
-                                            _SmallTextWidget("Dropped Trailer"),
-                                            Checkbox(
-                                              value: tuVal,
-                                              onChanged: (bool value) {
-                                                setState(() {
-                                                  tuVal = value;
-                                                });
-                                              },
-                                            ),
-                                          ],
-                                        )),
-                                    // [Wednesday] checkbox
-                                    Padding(
-                                        padding:
-                                            EdgeInsets.fromLTRB(8, 8, 8, 8),
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          children: <Widget>[
-                                            _SmallTextWidget("Courier Service"),
-                                            Checkbox(
-                                              value: wedVal,
-                                              onChanged: (bool value) {
-                                                setState(() {
-                                                  wedVal = value;
-                                                });
-                                              },
-                                            ),
-                                          ],
-                                        )),
-                                  ],
-                                )),
-                          ],
-                        ),
-                      )),
+                            decoration: BoxDecoration(color: Colors.white),
+                            alignment: Alignment(-1, -1),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Padding(
+                                    padding: EdgeInsets.fromLTRB(8, 8, 8, 0),
+                                    child: CustomTextFieldWidget(
+                                        "Shipper", "Company Name")),
+                                Padding(
+                                    padding: EdgeInsets.fromLTRB(8, 0, 8, 8),
+                                    child: CustomTextFieldWidget(
+                                        "Location", "Address")),
+                                Padding(
+                                    padding: EdgeInsets.fromLTRB(8, 0, 8, 0),
+                                    child: CustomTextFieldWidget(
+                                        "BOL #", "Optional")),
+                                Padding(
+                                    padding: EdgeInsets.fromLTRB(8, 24, 8, 8),
+                                    child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
+                                        children: <Widget>[
+                                          CustomDropDownWidget(
+                                              "Service Mode", "LTL"),
+                                          CustomDropDownWidget(
+                                              "Transit Service", "Select One")
+                                        ])),
+                                Padding(
+                                    padding: EdgeInsets.fromLTRB(8, 24, 8, 8),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: <Widget>[
+                                        _SmallTextBoldWidget("Pickup Services"),
+                                        // [Monday] checkbox
+                                        Padding(
+                                            padding:
+                                                EdgeInsets.fromLTRB(8, 8, 8, 8),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
+                                              children: <Widget>[
+                                                Checkbox(
+                                                  value: monVal,
+                                                  onChanged: (bool value) {
+                                                    setState(() {
+                                                      monVal = value;
+                                                    });
+                                                  },
+                                                ),
+                                                _SmallTextWidget(
+                                                    "Construction Site"),
+                                              ],
+                                            )),
+                                        // [Tuesday] checkbox
+                                        Padding(
+                                            padding:
+                                                EdgeInsets.fromLTRB(8, 8, 8, 8),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
+                                              children: <Widget>[
+                                                Checkbox(
+                                                  value: tuVal,
+                                                  onChanged: (bool value) {
+                                                    setState(() {
+                                                      tuVal = value;
+                                                    });
+                                                  },
+                                                ),
+                                                _SmallTextWidget(
+                                                    "Dropped Trailer"),
+                                              ],
+                                            )),
+                                        // [Wednesday] checkbox
+                                        Padding(
+                                            padding:
+                                                EdgeInsets.fromLTRB(8, 8, 8, 8),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
+                                              children: <Widget>[
+                                                Checkbox(
+                                                  value: wedVal,
+                                                  onChanged: (bool value) {
+                                                    setState(() {
+                                                      wedVal = value;
+                                                    });
+                                                  },
+                                                ),
+                                                _SmallTextWidget(
+                                                    "Courier Service"),
+                                              ],
+                                            )),
+                                      ],
+                                    )),
+                                Padding(
+                                    padding: EdgeInsets.fromLTRB(8, 8, 8, 8),
+                                    child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
+                                        children: <Widget>[
+                                          CustomDropDownWidget(
+                                              "Date Requested", "Select Date"),
+                                          CustomDropDownWidget(
+                                              "Date Actual", "Select Date")
+                                        ])),
+                              ],
+                            ),
+                          )),
                       Padding(
                           padding: EdgeInsets.fromLTRB(8, 24, 8, 8),
                           child: Container(
-                            color: Color.fromRGBO(255, 255, 255, 1),
+                              color: Color.fromRGBO(255, 255, 255, 1),
                               child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceAround,
                                   children: <Widget>[
-                                FlatButton(
-                                    onPressed: () {},
-                                    child: Text("Back"),
-                                    color: Colors.white,
-                                    textColor: Colors.blue,
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(4))),
-                                FlatButton(
-                                  onPressed: () {},
-                                  child: Text("Next"),
-                                  color: Colors.black,
-                                  textColor: Colors.white,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(4)),
-                                )
-                              ])))
+                                    FlatButton(
+                                        onPressed: () {},
+                                        child: Text("Back"),
+                                        color: Colors.white,
+                                        textColor: Colors.blue,
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(4))),
+                                    FlatButton(
+                                      onPressed: () {},
+                                      child: Text("Next"),
+                                      color: Colors.black,
+                                      textColor: Colors.white,
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(4)),
+                                    )
+                                  ])))
                     ])),
               ],
             )),

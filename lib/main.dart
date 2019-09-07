@@ -1,11 +1,23 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(EcommerceOrderForm());
+void main() => runApp(EcommerceOrderFormWidget());
 
-class EcommerceOrderForm extends StatelessWidget {
+class EcommerceOrderFormWidget extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return EcommerceOrderWidgetState();
+  }
+}
+
+class EcommerceOrderWidgetState extends State<EcommerceOrderFormWidget> {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    bool monVal = false;
+    bool tuVal = false;
+    bool wedVal = false;
+
     return MaterialApp(
       title: 'Ecommerce Order Placing Form - Flutter Practise',
       theme: ThemeData(
@@ -90,31 +102,91 @@ class EcommerceOrderForm extends StatelessWidget {
                                     CustomDropDownWidget(
                                         "Date Actual", "Select Date")
                                   ])),
+                          Padding(
+                              padding: EdgeInsets.fromLTRB(8, 24, 8, 8),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  _SmallTextBoldWidget("Pickup Services"),
+                                  // [Monday] checkbox
+                                  Padding(
+                                      padding: EdgeInsets.fromLTRB(8, 8, 8, 8),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: <Widget>[
+                                          _SmallTextWidget("Construction Site"),
+                                          Checkbox(
+                                            value: monVal,
+                                            onChanged: (bool value) {
+                                              setState(() {
+                                                monVal = value;
+                                              });
+                                            },
+                                          ),
+                                        ],
+                                      )),
+                                  // [Tuesday] checkbox
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: <Widget>[
+                                      _SmallTextWidget("Dropped Trailer"),
+                                      Checkbox(
+                                        value: tuVal,
+                                        onChanged: (bool value) {
+                                          setState(() {
+                                            tuVal = value;
+                                          });
+                                        },
+                                      ),
+                                    ],
+                                  ),
+                                  // [Wednesday] checkbox
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: <Widget>[
+                                      _SmallTextWidget("Courier Service"),
+                                      Checkbox(
+                                        value: wedVal,
+                                        onChanged: (bool value) {
+                                          setState(() {
+                                            wedVal = value;
+                                          });
+                                        },
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              )),
                         ],
                       ),
                     ))),
-                Padding(
-                    padding: EdgeInsets.fromLTRB(8, 24, 8, 8),
-                    child: Container(
-                        color: Colors.white,
-                        child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: <Widget>[
-                          FlatButton(
-                              onPressed: () {},
-                              child: Text("Back"),
-                              textColor: Colors.blue,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(4))),
-                          FlatButton(
-                            onPressed: () {},
-                            child: Text("Next"),
-                            color: Colors.black,
-                            textColor: Colors.white,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(4)),
-                          )
-                        ])))
+                Expanded(
+                    flex: 2,
+                    child: Padding(
+                        padding: EdgeInsets.fromLTRB(8, 24, 8, 8),
+                        child: Container(
+                            color: Colors.white,
+                            child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: <Widget>[
+                                  FlatButton(
+                                      onPressed: () {},
+                                      child: Text("Back"),
+                                      textColor: Colors.blue,
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(4))),
+                                  FlatButton(
+                                    onPressed: () {},
+                                    child: Text("Next"),
+                                    color: Colors.black,
+                                    textColor: Colors.white,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(4)),
+                                  )
+                                ]))))
               ],
             )),
       ),
